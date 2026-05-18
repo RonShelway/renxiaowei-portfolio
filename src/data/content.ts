@@ -145,7 +145,7 @@ export const content = {
           ],
         },
         link: { label: { zh: '在线体验', en: 'Live Demo' }, url: 'https://vero-833538459732.europe-west2.run.app' },
-        screenshots: ['/images/vero-1.png', '/images/vero-2.png'],
+        screenshots: ['images/vero-1.png', 'images/vero-2.png'],
       },
       {
         name: { zh: '猫咪同盟', en: 'Cat Alliance' },
@@ -163,7 +163,7 @@ export const content = {
             'Launched as a web platform featuring cat information, community forums, and protection campaign initiation.',
           ],
         },
-        screenshots: ['/images/cat-1.png', '/images/cat-2.png'],
+        screenshots: ['images/cat-1.png', 'images/cat-2.png'],
       },
     ],
   },
