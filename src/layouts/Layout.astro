@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+import LangToggle from '../components/LangToggle.astro';
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={title} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet" />
+  <title>{title}</title>
+</head>
+<body>
+  <LangToggle />
+  <main class="page-wrap">
+    <slot />
+  </main>
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Lang state
+    let currentLang = localStorage.getItem('lang') || 'zh';
+    document.documentElement.lang = currentLang === 'en' ? 'en' : 'zh-CN';
+
+    function setLang(lang: string) {
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        const elLang = el.getAttribute('data-lang');
+        (el as HTMLElement).style.display = elLang === lang ? '' : 'none';
+      });
+      // Update toggle button text
+      const btn = document.querySelector('.lang-btn') as HTMLElement;
+      if (btn) btn.textContent = lang === 'zh' ? 'EN' : '中';
+    }
+
+    // Initial display
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      const elLang = el.getAttribute('data-lang');
+      if (elLang !== currentLang) (el as HTMLElement).style.display = 'none';
+    });
+
+    // Expose to global scope
+    (window as any).setLang = setLang;
+  </script>
+</body>
+</html>
