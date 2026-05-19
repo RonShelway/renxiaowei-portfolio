@@ -1,8 +1,8 @@
 <div class="lang-toggle">
-  <button class="lang-btn" onclick="setLang(window.currentLang === 'zh' ? 'en' : 'zh')">EN</button>
+  <button class="lang-btn" onclick="window.setLang(window.__lang === 'zh' ? 'en' : 'zh')">EN</button>
 </div>
 <script>
-  (window as any).currentLang = localStorage.getItem('lang') || 'zh';
+  window.__lang = localStorage.getItem('lang') || 'zh';
   const btn = document.querySelector('.lang-btn') as HTMLElement;
-  if (btn) btn.textContent = (window as any).currentLang === 'zh' ? 'EN' : '中';
+  if (btn) btn.textContent = window.__lang === 'zh' ? 'EN' : '中';
 </script>

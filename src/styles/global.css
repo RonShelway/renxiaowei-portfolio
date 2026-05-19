@@ -25,6 +25,19 @@ body {
   min-height: 100vh;
 }
 
+/* === Background Layer === */
+.bg-layer {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  background-image: url('/images/bg.jpg');
+  background-size: cover;
+  background-position: center 40%;
+  opacity: 0.10;
+  filter: sepia(0.2) brightness(1.1);
+  pointer-events: none;
+}
+
 /* === Typography === */
 h1, h2, h3, h4 {
   font-weight: 700;
@@ -524,6 +537,130 @@ a:hover {
 .card.fade-in.visible:nth-child(odd)  { transform: rotate(-0.6deg); }
 .card.fade-in.visible:nth-child(even) { transform: rotate(0.8deg); }
 .card.fade-in.visible:first-child     { transform: none; }
+
+/* ========================================
+   NIGHT MODE
+   ======================================== */
+
+[data-theme="night"] .bg-layer {
+  opacity: 0.06;
+  filter: sepia(0.1) brightness(0.35);
+}
+
+[data-theme="night"] body {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(30,25,20,0.4) 0%, transparent 70%),
+    linear-gradient(180deg, #1E1B18 0%, #1A1714 100%);
+  color: #D0C8B8;
+}
+
+[data-theme="night"] h1,
+[data-theme="night"] h2,
+[data-theme="night"] h3,
+[data-theme="night"] h4 {
+  color: #D8D0C0;
+}
+
+[data-theme="night"] a { color: #D08070; }
+[data-theme="night"] a:hover { color: #E09888; }
+
+/* Night card colors */
+[data-theme="night"] .card-hero     { background: #2D2A25; }
+[data-theme="night"] .card-edu      { background: #253028; }
+[data-theme="night"] .card-exp      { background: #282530; }
+[data-theme="night"] .card-project  { background: #2D2825; }
+[data-theme="night"] .card-lead     { background: #252830; }
+[data-theme="night"] .card-academic { background: #282D28; }
+[data-theme="night"] .card-awards   { background: #2D2526; }
+[data-theme="night"] .card-skills   { background: #2D2A20; }
+
+[data-theme="night"] .card {
+  border-color: #3D3830;
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.25),
+    0 8px 20px rgba(0,0,0,0.18);
+}
+
+[data-theme="night"] .card:hover {
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.35),
+    0 16px 36px rgba(0,0,0,0.25);
+}
+
+[data-theme="night"] .card-index { color: #5A5040; }
+
+[data-theme="night"] .section-title {
+  color: #D8D0C0;
+  border-left-color: #C07060;
+}
+
+[data-theme="night"] .about-text { color: #B8A898; }
+
+/* Night timeline */
+[data-theme="night"] .timeline-item { border-left-color: #3D3830; }
+[data-theme="night"] .timeline-item::before { background: #C07060; }
+[data-theme="night"] .timeline-title { color: #D0C0A0; }
+[data-theme="night"] .timeline-period { color: #807060; }
+[data-theme="night"] .timeline-subtitle { color: #C08070; }
+[data-theme="night"] .timeline-details li { color: #B0A090; }
+[data-theme="night"] .timeline-details li::before { background: #504838; }
+
+[data-theme="night"] .softsep { background: #3D3830; }
+
+/* Night hero */
+[data-theme="night"] .hero-name { color: #D8D0C0; }
+[data-theme="night"] .hero-role { color: #A09080; }
+[data-theme="night"] .hero-contact { color: #908070; }
+[data-theme="night"] .hero-photo { border-color: #4D4838; }
+
+/* Night project */
+[data-theme="night"] .project-screenshots img { border-color: #3D3830; }
+[data-theme="night"] .project-link {
+  color: #D08070;
+  border-color: #6D5040;
+}
+[data-theme="night"] .project-link:hover {
+  background: #D08070;
+  color: #1E1B18;
+}
+
+/* Night skill tags (sticky notes become darker) */
+[data-theme="night"] .skill-tag {
+  color: #C0B080;
+  background: #3D3820;
+  border-color: #504820;
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.25);
+}
+[data-theme="night"] .skill-tag::after {
+  border-color: transparent transparent #38301C transparent;
+}
+[data-theme="night"] .skill-tag:hover {
+  box-shadow: 2px 4px 8px rgba(0,0,0,0.4);
+}
+
+[data-theme="night"] .skill-label { color: #A09080; }
+
+/* Night awards */
+[data-theme="night"] .award-item {
+  color: #B0A090;
+  border-bottom-color: #3D3830;
+}
+[data-theme="night"] .award-year { color: #807060; }
+
+/* Night footer */
+[data-theme="night"] .footer { color: #5A5040; }
+
+/* Night lang toggle */
+[data-theme="night"] .lang-btn {
+  background: #2D2A25;
+  border-color: #4D4838;
+  color: #908070;
+}
+[data-theme="night"] .lang-btn:hover {
+  border-color: #D08070;
+  color: #D08070;
+  background: #353028;
+}
 
 /* ========================================
    RESPONSIVE
