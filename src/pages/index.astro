@@ -7,35 +7,48 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title={c.meta.title.zh}>
-  <!-- Hero -->
-  <header class="hero fade-in">
-    <img src={`${base}images/photo.jpg`} alt="任小为" class="hero-photo" width="120" height="120" />
-    <h1 class="hero-name" data-lang="zh">{c.hero.name.zh}</h1>
-    <h1 class="hero-name" data-lang="en">{c.hero.name.en}</h1>
-    <p class="hero-tagline" data-lang="zh">{c.hero.tagline.zh}</p>
-    <p class="hero-tagline" data-lang="en">{c.hero.tagline.en}</p>
-    <div class="hero-contact">
-      <span>&#9742; {c.contact.phone}</span>
-      <span>&#9993; {c.contact.email}</span>
-      <span data-lang="zh">&#9962; {c.contact.location.zh}</span>
-      <span data-lang="en">&#9962; {c.contact.location.en}</span>
-    </div>
-    <div class="hero-contact" style="margin-top:10px">
-      <span data-lang="zh">&#127891; {c.contact.school.zh}</span>
-      <span data-lang="en">&#127891; {c.contact.school.en}</span>
+  <!-- Hero Card -->
+  <header class="card card-hero hero-card fade-in">
+    <div class="pushpin"></div>
+    <div class="card-index">No. 000</div>
+    <div class="hero-inner">
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-pin"></div>
+        <img src={`${base}images/photo.jpg`} alt="任小为" class="hero-photo" width="110" height="110" />
+      </div>
+      <div class="hero-info">
+        <h1 class="hero-name" data-lang="zh">{c.hero.name.zh}</h1>
+        <h1 class="hero-name" data-lang="en">{c.hero.name.en}</h1>
+        <p class="hero-role" data-lang="zh">{c.hero.tagline.zh}</p>
+        <p class="hero-role" data-lang="en">{c.hero.tagline.en}</p>
+        <div class="hero-contact">
+          <span>&#9742; {c.contact.phone}</span>
+          <span>&#9993; {c.contact.email}</span>
+          <span data-lang="zh">&#9962; {c.contact.location.zh}</span>
+          <span data-lang="en">&#9962; {c.contact.location.en}</span>
+        </div>
+        <div class="hero-contact" style="margin-top:8px">
+          <span data-lang="zh">&#127891; {c.contact.school.zh}</span>
+          <span data-lang="en">&#127891; {c.contact.school.en}</span>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- About -->
-  <section class="section fade-in">
+  <!-- About Card -->
+  <section class="card card-hero fade-in">
+    <div class="pushpin"></div>
+    <div class="card-index">No. 001</div>
     <h2 class="section-title" data-lang="zh">{c.about.title.zh}</h2>
     <h2 class="section-title" data-lang="en">{c.about.title.en}</h2>
     <p class="about-text" data-lang="zh">{c.about.text.zh}</p>
     <p class="about-text" data-lang="en">{c.about.text.en}</p>
   </section>
 
-  <!-- Education -->
-  <section class="section fade-in">
+  <!-- Education Card -->
+  <section class="card card-edu fade-in">
+    <div class="pushpin"></div>
+    <div class="card-index">No. 002</div>
     <h2 class="section-title" data-lang="zh">{c.education.title.zh}</h2>
     <h2 class="section-title" data-lang="en">{c.education.title.en}</h2>
     {c.education.items.map(item => (
@@ -55,32 +68,39 @@ const base = import.meta.env.BASE_URL;
     ))}
   </section>
 
-  <!-- Experience -->
-  <section class="section fade-in">
+  <!-- Experience Card -->
+  <section class="card card-exp fade-in">
+    <div class="pushpin"></div>
+    <div class="card-index">No. 003</div>
     <h2 class="section-title" data-lang="zh">{c.experience.title.zh}</h2>
     <h2 class="section-title" data-lang="en">{c.experience.title.en}</h2>
-    {c.experience.items.map(item => (
-      <div class="timeline-item">
-        <div class="timeline-header">
-          <span class="timeline-title">{item.company.zh} / {item.company.en}</span>
-          <span class="timeline-period">{item.period}</span>
+    {c.experience.items.map((item, i) => (
+      <>
+        {i > 0 && <hr class="softsep" />}
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <span class="timeline-title">{item.company.zh} / {item.company.en}</span>
+            <span class="timeline-period">{item.period}</span>
+          </div>
+          <div class="timeline-subtitle" data-lang="zh">{item.role.zh} · {item.industry.zh} · {item.location.zh}</div>
+          <div class="timeline-subtitle" data-lang="en">{item.role.en} · {item.industry.en} · {item.location.en}</div>
+          <ul class="timeline-details">
+            {item.bullets.zh.map((b, i) => (
+              <li data-lang="zh">{b}</li>
+            ))}
+            {item.bullets.en.map((b, i) => (
+              <li data-lang="en">{b}</li>
+            ))}
+          </ul>
         </div>
-        <div class="timeline-subtitle" data-lang="zh">{item.role.zh} · {item.industry.zh} · {item.location.zh}</div>
-        <div class="timeline-subtitle" data-lang="en">{item.role.en} · {item.industry.en} · {item.location.en}</div>
-        <ul class="timeline-details">
-          {item.bullets.zh.map((b, i) => (
-            <li data-lang="zh">{b}</li>
-          ))}
-          {item.bullets.en.map((b, i) => (
-            <li data-lang="en">{b}</li>
-          ))}
-        </ul>
-      </div>
+      </>
     ))}
   </section>
 
-  <!-- Projects -->
-  <section class="section fade-in">
+  <!-- Projects Card -->
+  <section class="card card-project fade-in">
+    <div class="pushpin"></div>
+    <div class="card-index">No. 004</div>
     <h2 class="section-title" data-lang="zh">{c.projects.title.zh}</h2>
     <h2 class="section-title" data-lang="en">{c.projects.title.en}</h2>
     {c.projects.items.map(item => (
@@ -105,15 +125,19 @@ const base = import.meta.env.BASE_URL;
         </div>
         {item.screenshots.length > 0 && (
           <div class="project-screenshots">
-            {item.screenshots.map(src => (<img src={`${base}${src}`} alt="" loading="lazy" />))}
+            {item.screenshots.map(src => (
+              <div><img src={`${base}${src}`} alt="" loading="lazy" /></div>
+            ))}
           </div>
         )}
       </div>
     ))}
   </section>
 
-  <!-- Leadership -->
-  <section class="section fade-in">
+  <!-- Leadership Card -->
+  <section class="card card-lead fade-in">
+    <div class="pushpin"></div>
+    <div class="card-index">No. 005</div>
     <h2 class="section-title" data-lang="zh">{c.leadership.title.zh}</h2>
     <h2 class="section-title" data-lang="en">{c.leadership.title.en}</h2>
     {c.leadership.items.map(item => (
@@ -133,8 +157,10 @@ const base = import.meta.env.BASE_URL;
     ))}
   </section>
 
-  <!-- Academic -->
-  <section class="section fade-in">
+  <!-- Academic Card -->
+  <section class="card card-academic fade-in">
+    <div class="pushpin"></div>
+    <div class="card-index">No. 006</div>
     <h2 class="section-title" data-lang="zh">{c.academic.title.zh}</h2>
     <h2 class="section-title" data-lang="en">{c.academic.title.en}</h2>
     <div class="timeline-item">
@@ -152,8 +178,10 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
-  <!-- Awards -->
-  <section class="section fade-in">
+  <!-- Awards Card -->
+  <section class="card card-awards fade-in">
+    <div class="pushpin"></div>
+    <div class="card-index">No. 007</div>
     <h2 class="section-title" data-lang="zh">{c.awards.title.zh}</h2>
     <h2 class="section-title" data-lang="en">{c.awards.title.en}</h2>
     {c.awards.items.map(item => (
@@ -165,8 +193,10 @@ const base = import.meta.env.BASE_URL;
     ))}
   </section>
 
-  <!-- Skills -->
-  <section class="section fade-in">
+  <!-- Skills Card -->
+  <section class="card card-skills fade-in">
+    <div class="pushpin"></div>
+    <div class="card-index">No. 008</div>
     <h2 class="section-title" data-lang="zh">{c.skills.title.zh}</h2>
     <h2 class="section-title" data-lang="en">{c.skills.title.en}</h2>
     {c.skills.groups.map(group => (
