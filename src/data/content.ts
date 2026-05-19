@@ -23,7 +23,7 @@ export const content = {
   about: {
     title: { zh: '关于我', en: 'About' },
     text: {
-      zh: '同济大学管理科学与工程硕士，本科信息管理与信息系统专业，具备扎实的数据分析与商业思维功底。研究生期间赴慕尼黑工业大学（TUM）交换，系统学习商业分析与机器学习，理解大模型及Agent原理，具备良好的技术理解力与国际化视野。拥有AI产品、数据产品等多行业产品实习经验，熟练使用Figma/墨刀进行原型设计，擅长需求分析、跨团队协作与数据驱动决策。英语流利（雅思7.5），能适应全球化产品团队协作环境。',
+      zh: '同济大学管理科学与工程硕士，本科信息管理与信息系统专业，具备扎实的数据分析与商业思维功底。研究生期间赴慕尼黑工业大学（TUM）交换，系统学习商业分析与机器学习，理解大模型及Agent原理，具备良好的技术理解力与国际化视野。拥有AI产品、数据产品等多行业产品实习经验，熟练使用Figma进行原型设计，擅长需求分析、跨团队协作与数据驱动决策。英语流利（雅思7.5），能适应全球化产品团队协作环境。',
       en: 'M.S. candidate in Management Science & Engineering at Tongji University, with a solid foundation in data analysis and business thinking. Exchange student at Technical University of Munich (TUM), where I studied business analytics and machine learning. I have internship experience across AI product, data product, and multiple industries. Proficient in Figma/Mockplus for prototyping, with strengths in requirements analysis, cross-functional collaboration, and data-driven decision-making. Fluent in English (IELTS 7.5).',
     },
   },
@@ -67,7 +67,7 @@ export const content = {
         location: { zh: '上海', en: 'Shanghai' },
         bullets: {
           zh: [
-            '负责 MA营销增长平台 的产品规划与迭代，参与需求分析、竞品调研与PRD撰写，使用Figma/墨刀输出高保真原型，推动算法与业务团队完成功能落地。',
+            '负责 MA营销增长平台 的产品规划与迭代，参与需求分析、竞品调研与PRD撰写，使用Figma输出高保真原型，推动算法与业务团队完成功能落地。',
             '参与 智能保顾 AI产品的用户调研与体验优化，通过用户访谈与行为数据分析识别关键痛点，制定产品优化方案。',
           ],
           en: [
