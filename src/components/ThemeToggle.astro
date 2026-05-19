@@ -1,0 +1,28 @@
+<div class="theme-toggle">
+  <button class="theme-btn" onclick="window.toggleTheme()" title="Toggle day/night">&#9790;</button>
+</div>
+<script>
+  (() => {
+    const btn = document.querySelector('.theme-btn') as HTMLElement;
+    const stored = localStorage.getItem('theme');
+
+    function updateBtn(theme: string) {
+      if (btn) btn.innerHTML = theme === 'night' ? '&#9788;' : '&#9790;';
+    }
+
+    function setTheme(theme: string) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      updateBtn(theme);
+    }
+
+    window.toggleTheme = () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      setTheme(current === 'night' ? 'day' : 'night');
+    };
+
+    // Init display
+    const current = document.documentElement.getAttribute('data-theme') || 'day';
+    updateBtn(current);
+  })();
+</script>

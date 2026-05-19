@@ -630,19 +630,23 @@ a:hover {
 .footer p { margin-bottom: 4px; }
 
 /* ========================================
-   LANG TOGGLE
+   TOP ACTIONS (theme + lang toggles)
    ======================================== */
 
-.lang-toggle {
+.top-actions {
   position: fixed;
   top: 18px;
   right: 22px;
   z-index: 100;
+  display: flex;
+  gap: 8px;
 }
-.lang-btn {
+
+.lang-btn,
+.theme-btn {
   background: #FFF9EE;
   border: 1px solid #D8D0C0;
-  padding: 3px 14px;
+  padding: 3px 12px;
   border-radius: 3px;
   font-size: 0.76rem;
   cursor: pointer;
@@ -651,8 +655,10 @@ a:hover {
   letter-spacing: 0.05em;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   transition: all 0.2s;
+  line-height: 1.4;
 }
-.lang-btn:hover {
+.lang-btn:hover,
+.theme-btn:hover {
   border-color: #C05040;
   color: #C05040;
   background: #FFFDF7;
@@ -780,13 +786,15 @@ a:hover {
 /* Night footer */
 [data-theme="night"] .footer { color: #5A5040; }
 
-/* Night lang toggle */
-[data-theme="night"] .lang-btn {
+/* Night top buttons */
+[data-theme="night"] .lang-btn,
+[data-theme="night"] .theme-btn {
   background: #2D2A25;
   border-color: #4D4838;
   color: #908070;
 }
-[data-theme="night"] .lang-btn:hover {
+[data-theme="night"] .lang-btn:hover,
+[data-theme="night"] .theme-btn:hover {
   border-color: #D08070;
   color: #D08070;
   background: #353028;
@@ -862,7 +870,7 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
-  .lang-toggle {
+  .top-actions {
     top: 8px;
     right: 10px;
   }
