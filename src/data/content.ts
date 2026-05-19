@@ -116,7 +116,7 @@ export const content = {
         location: { zh: '上海', en: 'Shanghai' },
         bullets: {
           zh: [
-            '深度参与采购全链路流程，通过数据分析识别物料流转瓶颈，推动跨部门流程优化与供应商管理体系迭代。',
+            '参与企业采购全链路流程协同，负责供应商沟通、需求对接与ERP系统流程支持，提升采购流程协作效率。', '基于业务数据开展Benchmarking比价分析，辅助采购决策与成本优化，提升数据驱动决策能力。', '梳理合同管理流程，搭建合同归档与信息管理体系，提升采购流程标准化与合规管理效率。',
           ],
           en: [
             'Engaged in end-to-end procurement processes, identified material flow bottlenecks through data analysis, and drove cross-departmental process optimization.',
