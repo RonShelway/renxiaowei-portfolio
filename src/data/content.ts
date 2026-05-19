@@ -99,8 +99,9 @@ export const content = {
         location: { zh: '上海', en: 'Shanghai' },
         bullets: {
           zh: [
-            '协助VSinger（虚拟歌手）业务线的项目管理工作，负责供应商入库审核与合同管理，优化采购与结算流程。',
-            '独立完成季度业务汇报材料的数据处理与分析，为管理层决策提供数据支持。',
+            '参与VSinger（虚拟歌手）业务线项目协同与流程管理，负责供应商准入审核、合同管理及业务流程跟进。',
+            '梳理采购与结算流程，优化业务协同与信息流转效率，提升流程规范化与执行效率。',
+            '独立完成季度业务数据整理、分析与汇报材料制作，对业务运营情况进行结构化分析，为管理层决策提供数据支持。',
           ],
           en: [
             'Supported project management for the VSinger (virtual idol) business line, managing supplier onboarding, contract review, and procurement process optimization.',
