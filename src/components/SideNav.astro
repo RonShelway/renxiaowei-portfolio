@@ -1,0 +1,214 @@
+<nav class="side-nav" aria-label="Page sections">
+  <a class="nav-item" href="#about" data-target="about" data-zh="关于" data-en="About">
+    <span class="nav-pin pin-cream"></span>
+    <span class="nav-label" data-lang="zh">关于</span>
+    <span class="nav-label" data-lang="en">About</span>
+  </a>
+  <a class="nav-item" href="#education" data-target="education" data-zh="教育" data-en="Edu">
+    <span class="nav-pin pin-mint"></span>
+    <span class="nav-label" data-lang="zh">教育</span>
+    <span class="nav-label" data-lang="en">Edu</span>
+  </a>
+  <a class="nav-item" href="#experience" data-target="experience" data-zh="实习" data-en="Exp">
+    <span class="nav-pin pin-lavender"></span>
+    <span class="nav-label" data-lang="zh">实习</span>
+    <span class="nav-label" data-lang="en">Exp</span>
+  </a>
+  <a class="nav-item" href="#projects" data-target="projects" data-zh="项目" data-en="Proj">
+    <span class="nav-pin pin-peach"></span>
+    <span class="nav-label" data-lang="zh">项目</span>
+    <span class="nav-label" data-lang="en">Proj</span>
+  </a>
+  <a class="nav-item" href="#leadership" data-target="leadership" data-zh="领导" data-en="Lead">
+    <span class="nav-pin pin-sky"></span>
+    <span class="nav-label" data-lang="zh">领导</span>
+    <span class="nav-label" data-lang="en">Lead</span>
+  </a>
+  <a class="nav-item" href="#academic" data-target="academic" data-zh="学术" data-en="Acad">
+    <span class="nav-pin pin-sage"></span>
+    <span class="nav-label" data-lang="zh">学术</span>
+    <span class="nav-label" data-lang="en">Acad</span>
+  </a>
+  <a class="nav-item" href="#awards" data-target="awards" data-zh="获奖" data-en="Awd">
+    <span class="nav-pin pin-rose"></span>
+    <span class="nav-label" data-lang="zh">获奖</span>
+    <span class="nav-label" data-lang="en">Awd</span>
+  </a>
+  <a class="nav-item" href="#skills" data-target="skills" data-zh="技能" data-en="Skil">
+    <span class="nav-pin pin-yellow"></span>
+    <span class="nav-label" data-lang="zh">技能</span>
+    <span class="nav-label" data-lang="en">Skil</span>
+  </a>
+</nav>
+
+<script>
+  (function() {
+    const navItems = document.querySelectorAll('.nav-item');
+    const sections = new Map<string, HTMLElement>();
+    navItems.forEach(item => {
+      const target = item.getAttribute('data-target');
+      if (target) {
+        const el = document.getElementById(target);
+        if (el) sections.set(target, el);
+      }
+    });
+
+    // Lang update — show correct label
+    function updateNavLabels(lang: string) {
+      navItems.forEach(item => {
+        const labels = item.querySelectorAll('.nav-label');
+        labels.forEach((lbl: Element) => {
+          const elLang = lbl.getAttribute('data-lang');
+          (lbl as HTMLElement).style.display = elLang === lang ? '' : 'none';
+        });
+      });
+    }
+
+    const currentLang = (window as any).__lang || localStorage.getItem('lang') || 'zh';
+    updateNavLabels(currentLang);
+
+    // Listen for lang changes from Layout.astro
+    const origSetLang = (window as any).setLang;
+    if (origSetLang) {
+      (window as any).setLang = function(lang: string) {
+        origSetLang(lang);
+        updateNavLabels(lang);
+        // Update tooltip
+        navItems.forEach(item => {
+          item.setAttribute('title', item.getAttribute('data-' + lang) || '');
+        });
+      };
+    }
+
+    // Set initial titles
+    navItems.forEach(item => {
+      item.setAttribute('title', item.getAttribute('data-' + currentLang) || '');
+    });
+
+    // Intersection Observer for active tracking
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const navItem = document.querySelector(`[data-target="${entry.target.id}"]`);
+        if (navItem) {
+          if (entry.isIntersecting) {
+            navItems.forEach(ni => ni.classList.remove('active'));
+            navItem.classList.add('active');
+          }
+        }
+      });
+    }, {
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0,
+    });
+
+    sections.forEach(section => observer.observe(section));
+
+    // Click — smooth scroll
+    navItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = item.getAttribute('data-target');
+        if (target) {
+          const el = document.getElementById(target);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+  })();
+</script>
+
+<style>
+  .side-nav {
+    position: fixed;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-55%);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 90;
+    padding: 12px 4px;
+  }
+
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.45;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .nav-item:hover,
+  .nav-item.active {
+    opacity: 1;
+  }
+
+  .nav-item:hover {
+    transform: translateY(-2px);
+  }
+
+  .nav-pin {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50% 50% 36% 36% / 40% 40% 50% 50%;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.12);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .nav-item.active .nav-pin {
+    transform: scale(1.25);
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.22), 0 0 6px rgba(0,0,0,0.08);
+  }
+
+  .nav-item:hover .nav-pin {
+    transform: translateY(-1px) scale(1.1);
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.16);
+  }
+
+  .nav-item.active:hover .nav-pin {
+    transform: scale(1.25);
+  }
+
+  /* Pushpin colors */
+  .pin-cream    { background: linear-gradient(150deg, #F0C890 0%, #D4A060 60%, #A88030 100%); }
+  .pin-mint     { background: linear-gradient(150deg, #90D0A0 0%, #60A870 60%, #308040 100%); }
+  .pin-lavender { background: linear-gradient(150deg, #B0A0E0 0%, #8070C0 60%, #5040A0 100%); }
+  .pin-peach    { background: linear-gradient(150deg, #F0B890 0%, #D08060 60%, #A85830 100%); }
+  .pin-sky      { background: linear-gradient(150deg, #90C0F0 0%, #6090D0 60%, #3060B0 100%); }
+  .pin-sage     { background: linear-gradient(150deg, #A8C8A0 0%, #78A070 60%, #487040 100%); }
+  .pin-rose     { background: linear-gradient(150deg, #F0A0B0 0%, #D07080 60%, #A04050 100%); }
+  .pin-yellow   { background: linear-gradient(150deg, #F0D880 0%, #D0B850 60%, #A89020 100%); }
+
+  .nav-label {
+    font-size: 0.66rem;
+    font-family: 'Noto Serif SC', Georgia, serif;
+    color: #5A4E3E;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    transition: color 0.3s;
+  }
+
+  .nav-item.active .nav-label {
+    color: #3D2216;
+    font-weight: 700;
+  }
+
+  /* Night mode */
+  [data-theme="night"] .nav-label {
+    color: #A09080;
+  }
+  [data-theme="night"] .nav-item.active .nav-label {
+    color: #E0D0C0;
+  }
+
+  /* Mobile hide */
+  @media (max-width: 900px) {
+    .side-nav { display: none; }
+  }
+</style>
