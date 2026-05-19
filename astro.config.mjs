@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://ronshelway.github.io',
-  base: '/renxiaowei-portfolio/',
+  site: 'https://renxiaowei-portfolio.pages.dev',
+  base: '/',
   output: 'static',
 });
