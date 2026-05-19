@@ -1,7 +1,7 @@
 // 所有页面内容，zh/en 双语
 export const content = {
   meta: {
-    title: { zh: '任小为 · 产品经理', en: 'Xiaowei Ren · Product Manager' },
+    title: { zh: '任小为 · 个人主页', en: 'Xiaowei Ren · Personal Site' },
     description: {
       zh: '同济大学管理科学与工程硕士，专注 AI 产品与数据产品。技术理解 × 商业思维 × 国际视野。',
       en: 'M.S. in Management Science & Engineering at Tongji University. AI Product · Data Product · Global Perspective.',
