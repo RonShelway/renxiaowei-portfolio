@@ -10,8 +10,8 @@ export const content = {
   hero: {
     name: { zh: '任小为', en: 'Xiaowei Ren' },
     tagline: {
-      zh: '产品经理 · 技术理解 × 商业思维 × 国际视野',
-      en: 'Product Manager · Tech Fluency × Business Thinking × Global Perspective',
+      zh: '技术理解 × 商业思维 × 国际视野',
+      en: 'Tech Fluency × Business Thinking × Global Perspective',
     },
   },
   contact: {
@@ -23,8 +23,8 @@ export const content = {
   about: {
     title: { zh: '关于我', en: 'About' },
     text: {
-      zh: '同济大学管理科学与工程硕士，本科信息管理与信息系统专业（GPA 4.57/5.0），具备扎实的数据分析与商业思维功底。研究生期间赴慕尼黑工业大学（TUM）交换，系统学习商业分析与机器学习，理解大模型及Agent原理，具备良好的技术理解力与国际化视野。拥有AI产品、数据产品等多行业产品实习经验，熟练使用Figma/墨刀进行原型设计，擅长需求分析、跨团队协作与数据驱动决策。英语流利（雅思7.5），能适应全球化产品团队协作环境。',
-      en: 'M.S. candidate in Management Science & Engineering at Tongji University (GPA 4.57/5.0), with a solid foundation in data analysis and business thinking. Exchange student at Technical University of Munich (TUM), where I studied business analytics and machine learning. I have internship experience across AI product, data product, and multiple industries. Proficient in Figma/Mockplus for prototyping, with strengths in requirements analysis, cross-functional collaboration, and data-driven decision-making. Fluent in English (IELTS 7.5).',
+      zh: '同济大学管理科学与工程硕士，本科信息管理与信息系统专业，具备扎实的数据分析与商业思维功底。研究生期间赴慕尼黑工业大学（TUM）交换，系统学习商业分析与机器学习，理解大模型及Agent原理，具备良好的技术理解力与国际化视野。拥有AI产品、数据产品等多行业产品实习经验，熟练使用Figma/墨刀进行原型设计，擅长需求分析、跨团队协作与数据驱动决策。英语流利（雅思7.5），能适应全球化产品团队协作环境。',
+      en: 'M.S. candidate in Management Science & Engineering at Tongji University, with a solid foundation in data analysis and business thinking. Exchange student at Technical University of Munich (TUM), where I studied business analytics and machine learning. I have internship experience across AI product, data product, and multiple industries. Proficient in Figma/Mockplus for prototyping, with strengths in requirements analysis, cross-functional collaboration, and data-driven decision-making. Fluent in English (IELTS 7.5).',
     },
   },
   education: {
@@ -60,7 +60,7 @@ export const content = {
     title: { zh: '实习经历', en: 'Experience' },
     items: [
       {
-        company: { zh: '太平洋保险 (CPIC)', en: 'CPIC' },
+        company: { zh: '太平洋保险', en: 'CPIC' },
         period: '2026.04 – 2026.05',
         role: { zh: 'AI产品经理实习生', en: 'AI Product Manager Intern' },
         industry: { zh: '保险 / 金融科技', en: 'Insurance / FinTech' },
@@ -132,7 +132,7 @@ export const content = {
         name: 'Vero',
         period: { zh: '2025.10 – 至今', en: '2025.10 – Present' },
         role: { zh: '产品负责人', en: 'Product Lead' },
-        context: { zh: 'UnternehmerTUM 创新营', en: 'UnternehmerTUM Innovation Sprint' },
+        context: { zh: 'UnternehmerTUM', en: 'UnternehmerTUM' },
         location: { zh: '德国，慕尼黑', en: 'Munich, Germany' },
         bullets: {
           zh: [
