@@ -1,8 +1,8 @@
 <nav class="side-nav" aria-label="Page sections">
-  <a class="nav-item" href="#about" data-target="about" data-zh="关于" data-en="About">
+  <a class="nav-item" href="#about" data-target="about" data-zh="关于我" data-en="About Me">
     <span class="nav-pin pin-cream"></span>
-    <span class="nav-label" data-lang="zh">关于</span>
-    <span class="nav-label" data-lang="en">About</span>
+    <span class="nav-label" data-lang="zh">关于我</span>
+    <span class="nav-label" data-lang="en">About Me</span>
   </a>
   <a class="nav-item" href="#education" data-target="education" data-zh="教育" data-en="Edu">
     <span class="nav-pin pin-mint"></span>
@@ -19,9 +19,9 @@
     <span class="nav-label" data-lang="zh">项目</span>
     <span class="nav-label" data-lang="en">Proj</span>
   </a>
-  <a class="nav-item" href="#leadership" data-target="leadership" data-zh="领导" data-en="Lead">
+  <a class="nav-item" href="#leadership" data-target="leadership" data-zh="领导力" data-en="Leadership">
     <span class="nav-pin pin-sky"></span>
-    <span class="nav-label" data-lang="zh">领导</span>
+    <span class="nav-label" data-lang="zh">领导力</span>
     <span class="nav-label" data-lang="en">Lead</span>
   </a>
   <a class="nav-item" href="#academic" data-target="academic" data-zh="学术" data-en="Acad">
@@ -33,11 +33,6 @@
     <span class="nav-pin pin-rose"></span>
     <span class="nav-label" data-lang="zh">获奖</span>
     <span class="nav-label" data-lang="en">Awd</span>
-  </a>
-  <a class="nav-item" href="#skills" data-target="skills" data-zh="技能" data-en="Skil">
-    <span class="nav-pin pin-yellow"></span>
-    <span class="nav-label" data-lang="zh">技能</span>
-    <span class="nav-label" data-lang="en">Skil</span>
   </a>
 </nav>
 
@@ -73,7 +68,6 @@
       (window as any).setLang = function(lang: string) {
         origSetLang(lang);
         updateNavLabels(lang);
-        // Update tooltip
         navItems.forEach(item => {
           item.setAttribute('title', item.getAttribute('data-' + lang) || '');
         });
@@ -124,23 +118,29 @@
     position: fixed;
     left: 24px;
     top: 50%;
-    transform: translateY(-55%);
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 18px;
     z-index: 90;
-    padding: 12px 4px;
+    padding: 16px 6px;
+    background: rgba(245, 240, 232, 0.55);
+    border-radius: 8px;
+    border: 1px solid rgba(200, 190, 170, 0.25);
+    backdrop-filter: blur(4px);
   }
 
   .nav-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
     text-decoration: none;
     cursor: pointer;
-    opacity: 0.45;
-    transition: opacity 0.3s, transform 0.3s;
+    opacity: 0.5;
+    transition: opacity 0.35s, transform 0.35s;
+    padding: 2px 8px;
+    border-radius: 4px;
   }
 
   .nav-item:hover,
@@ -149,30 +149,31 @@
   }
 
   .nav-item:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
   }
 
   .nav-pin {
     display: block;
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
     border-radius: 50% 50% 36% 36% / 40% 40% 50% 50%;
-    box-shadow: 1px 2px 3px rgba(0,0,0,0.12);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.14);
+    transition: transform 0.35s, box-shadow 0.35s;
   }
 
   .nav-item.active .nav-pin {
-    transform: scale(1.25);
-    box-shadow: 1px 2px 4px rgba(0,0,0,0.22), 0 0 6px rgba(0,0,0,0.08);
+    transform: scale(1.3);
+    box-shadow: 2px 4px 7px rgba(0,0,0,0.24), 0 0 8px rgba(0,0,0,0.1);
   }
 
   .nav-item:hover .nav-pin {
-    transform: translateY(-1px) scale(1.1);
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.16);
+    transform: translateY(-2px) scale(1.15);
+    box-shadow: 2px 5px 8px rgba(0,0,0,0.2);
   }
 
   .nav-item.active:hover .nav-pin {
-    transform: scale(1.25);
+    transform: scale(1.3);
+    box-shadow: 2px 4px 7px rgba(0,0,0,0.24), 0 0 8px rgba(0,0,0,0.1);
   }
 
   /* Pushpin colors */
@@ -183,15 +184,14 @@
   .pin-sky      { background: linear-gradient(150deg, #90C0F0 0%, #6090D0 60%, #3060B0 100%); }
   .pin-sage     { background: linear-gradient(150deg, #A8C8A0 0%, #78A070 60%, #487040 100%); }
   .pin-rose     { background: linear-gradient(150deg, #F0A0B0 0%, #D07080 60%, #A04050 100%); }
-  .pin-yellow   { background: linear-gradient(150deg, #F0D880 0%, #D0B850 60%, #A89020 100%); }
 
   .nav-label {
-    font-size: 0.66rem;
+    font-size: 0.78rem;
     font-family: 'Noto Serif SC', Georgia, serif;
     color: #5A4E3E;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     white-space: nowrap;
-    transition: color 0.3s;
+    transition: color 0.35s;
   }
 
   .nav-item.active .nav-label {
@@ -200,6 +200,10 @@
   }
 
   /* Night mode */
+  [data-theme="night"] .side-nav {
+    background: rgba(30, 27, 24, 0.55);
+    border-color: rgba(60, 55, 48, 0.35);
+  }
   [data-theme="night"] .nav-label {
     color: #A09080;
   }
@@ -208,7 +212,7 @@
   }
 
   /* Mobile hide */
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
     .side-nav { display: none; }
   }
 </style>

@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import LangToggle from '../components/LangToggle.astro';
 import SideNav from '../components/SideNav.astro';
+import SkillsPanel from '../components/SkillsPanel.astro';
 const { title } = Astro.props;
 ---
 
@@ -20,6 +21,7 @@ const { title } = Astro.props;
   <div class="bg-layer" aria-hidden="true"></div>
   <LangToggle />
   <SideNav />
+  <SkillsPanel />
   <main class="page-wrap">
     <slot />
   </main>

@@ -193,23 +193,6 @@ const base = import.meta.env.BASE_URL;
     ))}
   </section>
 
-  <!-- Skills Card -->
-  <section class="card card-skills fade-in" id="skills">
-    <div class="pushpin"></div>
-    <div class="card-index">No. 008</div>
-    <h2 class="section-title" data-lang="zh">{c.skills.title.zh}</h2>
-    <h2 class="section-title" data-lang="en">{c.skills.title.en}</h2>
-    {c.skills.groups.map(group => (
-      <div class="skill-group">
-        <span class="skill-label" data-lang="zh">{group.label.zh}</span>
-        <span class="skill-label" data-lang="en">{group.label.en}</span>
-        {group.tags.map(tag => (
-          <span class="skill-tag">{typeof tag === 'string' ? tag : tag.zh}<span data-lang="en" style="display:none">{typeof tag === 'string' ? '' : ' / ' + tag.en}</span></span>
-        ))}
-      </div>
-    ))}
-  </section>
-
   <!-- Footer -->
   <footer class="footer fade-in">
     <p data-lang="zh">{c.footer.copyright.zh}</p>

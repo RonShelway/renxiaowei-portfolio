@@ -1,0 +1,188 @@
+<aside class="skills-panel" aria-label="Skills">
+  <div class="skills-panel-pin"></div>
+  <h3 class="skills-panel-title" data-lang="zh">技能</h3>
+  <h3 class="skills-panel-title" data-lang="en">Skills</h3>
+  <div class="skills-panel-groups" id="skills-panel-groups">
+    <!-- Populated by JS from content.ts data -->
+  </div>
+</aside>
+
+<script>
+  // Skills data — mirrored from content.ts so this component is self-contained
+  const skillsData = {
+    zh: {
+      title: '技能',
+      groups: [
+        { label: '产品工具', tags: ['Figma', '墨刀', 'PRD'] },
+        { label: 'AI 能力', tags: ['大模型原理', 'Agent 应用', 'AI 工作流'] },
+        { label: '数据分析', tags: ['Python', 'SQL', 'PowerBI'] },
+        { label: '开发基础', tags: ['Java', 'C/C++'] },
+        { label: '语言能力', tags: ['IELTS 7.5', 'CET-6 637', '听说读写流利'] },
+      ],
+    },
+    en: {
+      title: 'Skills',
+      groups: [
+        { label: 'Product', tags: ['Figma', 'Mockplus', 'PRD'] },
+        { label: 'AI', tags: ['LLM Principles', 'Agent Workflows', 'AI Automation'] },
+        { label: 'Data', tags: ['Python', 'SQL', 'PowerBI'] },
+        { label: 'Dev', tags: ['Java', 'C/C++'] },
+        { label: 'Languages', tags: ['IELTS 7.5', 'CET-6 637', 'Fluent English'] },
+      ],
+    },
+  };
+
+  function renderSkills(lang: string) {
+    const container = document.getElementById('skills-panel-groups');
+    if (!container) return;
+    const data = lang === 'en' ? skillsData.en : skillsData.zh;
+    container.innerHTML = data.groups.map(g =>
+      `<div class="sp-group">
+        <span class="sp-label">${g.label}</span>
+        <div class="sp-tags">${g.tags.map(t => `<span class="sp-tag">${t}</span>`).join('')}</div>
+      </div>`
+    ).join('');
+  }
+
+  const currentLang = (window as any).__lang || localStorage.getItem('lang') || 'zh';
+  renderSkills(currentLang);
+
+  // Update on lang change
+  const origSetLang = (window as any).setLang;
+  if (origSetLang) {
+    (window as any).setLang = function(lang: string) {
+      origSetLang(lang);
+      renderSkills(lang);
+    };
+  }
+</script>
+
+<style>
+  .skills-panel {
+    position: fixed;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 185px;
+    max-height: 75vh;
+    overflow-y: auto;
+    z-index: 90;
+    background: #FFFAED;
+    border: 1px solid #E8D880;
+    border-radius: 4px;
+    padding: 22px 16px 18px;
+    box-shadow:
+      1px 3px 6px rgba(0,0,0,0.06),
+      0 8px 20px rgba(0,0,0,0.04);
+    transform: translateY(-50%) rotate(0.8deg);
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .skills-panel:hover {
+    transform: translateY(-52%) rotate(0deg);
+    box-shadow:
+      2px 4px 12px rgba(0,0,0,0.1),
+      0 14px 32px rgba(0,0,0,0.07);
+  }
+
+  .skills-panel-pin {
+    position: absolute;
+    top: -9px;
+    left: 16px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50% 50% 36% 36% / 40% 40% 50% 50%;
+    background: linear-gradient(150deg, #F0D880 0%, #D0B850 60%, #A89020 100%);
+    box-shadow: 1px 3px 6px rgba(0,0,0,0.16);
+  }
+  .skills-panel-pin::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+  }
+
+  .skills-panel-title {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #5A4A2E;
+    margin-bottom: 14px;
+    text-align: center;
+    letter-spacing: 0.06em;
+  }
+
+  .sp-group {
+    margin-bottom: 12px;
+  }
+  .sp-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .sp-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #8B7E6A;
+    margin-bottom: 5px;
+    font-family: 'Noto Serif SC', Georgia, serif;
+    letter-spacing: 0.04em;
+  }
+
+  .sp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .sp-tag {
+    display: inline-block;
+    font-family: 'Caveat', 'KaiTi', serif;
+    font-size: 0.88rem;
+    color: #5A4A2E;
+    background: #FFE893;
+    border: 1px solid #ECD880;
+    padding: 2px 10px;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.06);
+    white-space: nowrap;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .sp-tag:nth-child(odd)  { transform: rotate(-2deg); }
+  .sp-tag:nth-child(even) { transform: rotate(2deg); }
+  .sp-tag:hover {
+    transform: rotate(0deg) translateY(-1px);
+    box-shadow: 1px 3px 6px rgba(0,0,0,0.12);
+  }
+
+  /* Night mode */
+  [data-theme="night"] .skills-panel {
+    background: #2D2A20;
+    border-color: #504820;
+  }
+  [data-theme="night"] .skills-panel-title {
+    color: #D0C080;
+  }
+  [data-theme="night"] .sp-label {
+    color: #A09080;
+  }
+  [data-theme="night"] .sp-tag {
+    color: #C0B080;
+    background: #3D3820;
+    border-color: #504820;
+  }
+
+  /* Scrollbar styling */
+  .skills-panel::-webkit-scrollbar { width: 4px; }
+  .skills-panel::-webkit-scrollbar-track { background: transparent; }
+  .skills-panel::-webkit-scrollbar-thumb { background: #D8D0C0; border-radius: 2px; }
+  [data-theme="night"] .skills-panel::-webkit-scrollbar-thumb { background: #4D4838; }
+
+  /* Mobile hide */
+  @media (max-width: 1024px) {
+    .skills-panel { display: none; }
+  }
+</style>
