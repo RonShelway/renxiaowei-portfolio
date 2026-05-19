@@ -200,6 +200,8 @@ const base = import.meta.env.BASE_URL;
     {c.skills.groups.map(group => (
       <div class="skill-board">
         <div class="skill-board-pin"></div>
+        <span class="skill-board-label" data-lang="zh">{group.label.zh}</span>
+        <span class="skill-board-label" data-lang="en">{group.label.en}</span>
         <div class="skill-board-tags" data-lang="zh">
           {group.tags.map(tag => (
             <span class="skill-tag">{typeof tag === 'string' ? tag : tag.zh}</span>

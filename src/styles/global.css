@@ -477,6 +477,17 @@ a:hover {
 
 /* ── Board inner tags area ── */
 
+.skill-board-label {
+  display: block;
+  font-family: 'Noto Serif SC', Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #6B5040;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
 .skill-board-tags {
   display: flex;
   flex-wrap: wrap;
@@ -529,6 +540,10 @@ a:hover {
 [data-theme="night"] .skills-wall-title {
   color: #B0A090;
   border-bottom-color: #3D3830;
+}
+
+[data-theme="night"] .skill-board-label {
+  color: #C0A890;
 }
 
 [data-theme="night"] .skill-board {
