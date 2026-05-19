@@ -23,7 +23,7 @@ const base = import.meta.env.BASE_URL;
         <p class="hero-role" data-lang="en">{c.hero.tagline.en}</p>
         <div class="hero-contact">
           <span>&#9742; {c.contact.phone}</span>
-          <span>&#9993; {c.contact.email}</span>
+          <span>&#9993; <a href="mailto:{c.contact.email}">{c.contact.email}</a></span>
           <span data-lang="zh">&#9962; {c.contact.location.zh}</span>
           <span data-lang="en">&#9962; {c.contact.location.en}</span>
         </div>
