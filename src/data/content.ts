@@ -208,7 +208,7 @@ export const content = {
     period: '2024.09 – 2025.04',
     context: { zh: '国家自然科学基金项目 · 核心研究员', en: 'NSFC Project · Core Researcher' },
     bullets: {
-      zh: ['运用数据挖掘与行为分析方法，研究在线医疗平台医患交互模式，通过用户行为建模识别平台服务痛点并提出优化建议，为国家自然科学基金项目提供数据支持。'],
+      zh: ['基于在线医疗对话数据，分析用户交互行为与满意度关系，探索AI辅助问诊优化方向，提出提升平台服务效率与用户体验的策略方案。'],
       en: ['Applied data mining and behavioral analysis to study doctor-patient interaction patterns on online healthcare platforms, identifying service pain points through user behavior modeling and proposing optimization recommendations for an NSFC-funded project.'],
     },
   },
