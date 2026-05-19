@@ -84,7 +84,7 @@ export const content = {
         location: { zh: '上海', en: 'Shanghai' },
         bullets: {
           zh: [
-            '负责跨国HR与财务数据产品规划，深入梳理多国业务需求，整合Jira数据源，设计数据指标体系与可视化方案，通过PowerBI看板驱动管理层决策效率提升。',
+            '参与跨国HR与财务数据产品规划，深入分析多国家业务场景与管理需求，推动数据指标体系与业务口径标准化建设。', '整合Jira等多源业务数据，设计经营分析、项目进度追踪与资源管理等核心模块的可视化方案。', '基于Power BI搭建动态数据看板，实现业务指标、项目进度与资源状态的实时监控，提升管理层决策效率与项目协同效率。',
           ],
           en: [
             'Managed multinational HR & Finance data product planning, integrated Jira data sources, designed KPI frameworks and visualization dashboards via PowerBI to improve management decision-making efficiency.',
