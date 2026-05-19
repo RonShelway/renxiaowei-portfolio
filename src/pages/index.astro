@@ -193,6 +193,24 @@ const base = import.meta.env.BASE_URL;
     ))}
   </section>
 
+  <!-- Skills Wall — scattered sticky notes -->
+  <div class="skills-wall">
+    {c.skills.groups.map((group, gi) => (
+      <>
+        <div class="skill-note" data-lang="zh">
+          <div class="skill-note-tape"></div>
+          <span class="skill-note-label">{group.label.zh}</span>
+          <span class="skill-note-tags">{group.tags.map(t => typeof t === 'string' ? t : t.zh).join('  ')}</span>
+        </div>
+        <div class="skill-note" data-lang="en">
+          <div class="skill-note-tape"></div>
+          <span class="skill-note-label">{group.label.en}</span>
+          <span class="skill-note-tags">{group.tags.map(t => typeof t === 'string' ? t : t.en).join('  ')}</span>
+        </div>
+      </>
+    ))}
+  </div>
+
   <!-- Footer -->
   <footer class="footer fade-in">
     <p data-lang="zh">{c.footer.copyright.zh}</p>

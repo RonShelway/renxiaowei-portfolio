@@ -391,62 +391,122 @@ a:hover {
 }
 
 /* ========================================
-   STICKY NOTE SKILL TAGS
+   SKILLS WALL — scattered sticky notes
    ======================================== */
 
-.skill-group {
-  margin-bottom: 16px;
+.skills-wall {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc((100vw - 750px) / 2 - 16px);
+  min-width: 130px;
+  max-width: 220px;
   display: flex;
-  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 10px;
-  padding-left: 4px;
+  gap: 14px;
+  justify-content: center;
+  z-index: 85;
+  pointer-events: none;  /* let clicks pass through the wall container */
 }
 
-.skill-label {
-  font-weight: 700;
-  font-size: 0.86rem;
-  color: #6B5E4E;
-  min-width: 72px;
-  padding-top: 4px;
-  font-family: 'Noto Serif SC', Georgia, serif;
-}
-
-.skill-tag {
-  display: inline-block;
+.skill-note {
   position: relative;
-  color: #5A4A2E;
-  background: #FFE893;
-  border: 1px solid #ECD880;
-  padding: 4px 14px;
-  box-shadow: 1px 2px 4px rgba(0,0,0,0.06);
-  font-family: 'Caveat', 'KaiTi', 'STKaiti', serif;
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
+  background: linear-gradient(175deg, #FFFDF5 0%, #FFF9E6 40%, #F5EDD5 100%);
+  border: 1px solid #E8DDC0;
+  padding: 16px 14px 12px;
+  box-shadow:
+    1px 2px 5px rgba(0,0,0,0.05),
+    2px 4px 8px rgba(0,0,0,0.03);
+  cursor: default;
+  pointer-events: auto;
   transition:
-    transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    box-shadow 0.25s ease;
+    transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.35s;
 }
-.skill-tag:nth-child(odd)  { transform: rotate(-2deg); }
-.skill-tag:nth-child(even) { transform: rotate(2.5deg); }
-.skill-tag:nth-child(3n)   { transform: rotate(-1.5deg); }
 
-/* Sticky note folded corner */
-.skill-tag::after {
-  content: '';
+.skill-note:nth-child(odd)  { transform: rotate(2.5deg); }
+.skill-note:nth-child(even) { transform: rotate(-2deg); }
+.skill-note:nth-child(5n)   { transform: rotate(3.5deg); }
+.skill-note:nth-child(7n)   { transform: rotate(-3deg); }
+
+.skill-note:hover {
+  transform: rotate(0deg) translateY(-5px) !important;
+  box-shadow:
+    2px 8px 14px rgba(0,0,0,0.1),
+    4px 10px 20px rgba(0,0,0,0.06);
+  z-index: 5;
+}
+
+/* Translucent tape */
+.skill-note-tape {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 0 8px 8px;
-  border-color: transparent transparent #E8D080 transparent;
+  top: -11px;
+  left: 50%;
+  width: 38px;
+  height: 13px;
+  background: rgba(240, 235, 220, 0.55);
+  border-radius: 2px;
+  transform: translateX(-50%) rotate(-3deg);
+  opacity: 0.7;
+}
+.skill-note:nth-child(even) .skill-note-tape {
+  transform: translateX(-50%) rotate(4deg);
+  width: 30px;
+}
+.skill-note:nth-child(5n) .skill-note-tape {
+  width: 44px;
+  transform: translateX(-50%) rotate(-5deg);
 }
 
-.skill-tag:hover {
-  transform: rotate(0deg) translateY(-2px) !important;
-  box-shadow: 2px 4px 8px rgba(0,0,0,0.1);
+.skill-note-label {
+  display: block;
+  font-family: 'Noto Serif SC', Georgia, serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #6B5E4E;
+  margin-bottom: 5px;
+  letter-spacing: 0.04em;
+}
+
+.skill-note-tags {
+  display: block;
+  font-family: 'Caveat', 'KaiTi', serif;
+  font-size: 0.88rem;
+  color: #8B7E6A;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+}
+
+/* Night mode */
+[data-theme="night"] .skill-note {
+  background: linear-gradient(175deg, #302D25 0%, #2D2A20 40%, #252218 100%);
+  border-color: #3D3828;
+  box-shadow:
+    1px 2px 5px rgba(0,0,0,0.2),
+    2px 4px 8px rgba(0,0,0,0.15);
+}
+[data-theme="night"] .skill-note-tape {
+  background: rgba(60, 58, 50, 0.45);
+}
+[data-theme="night"] .skill-note-label {
+  color: #B0A090;
+}
+[data-theme="night"] .skill-note-tags {
+  color: #A09880;
+}
+
+/* Mobile — collapse to bottom */
+@media (max-width: 1024px) {
+  .skills-wall {
+    position: static;
+    transform: none;
+    width: auto;
+    max-width: 100%;
+    margin: 48px auto 0;
+    padding: 0 24px;
+    justify-content: center;
+  }
 }
 
 /* ========================================
@@ -623,22 +683,6 @@ a:hover {
   background: #D08070;
   color: #1E1B18;
 }
-
-/* Night skill tags (sticky notes become darker) */
-[data-theme="night"] .skill-tag {
-  color: #C0B080;
-  background: #3D3820;
-  border-color: #504820;
-  box-shadow: 1px 2px 4px rgba(0,0,0,0.25);
-}
-[data-theme="night"] .skill-tag::after {
-  border-color: transparent transparent #38301C transparent;
-}
-[data-theme="night"] .skill-tag:hover {
-  box-shadow: 2px 4px 8px rgba(0,0,0,0.4);
-}
-
-[data-theme="night"] .skill-label { color: #A09080; }
 
 /* Night awards */
 [data-theme="night"] .award-item {
