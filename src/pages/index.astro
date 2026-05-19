@@ -193,21 +193,24 @@ const base = import.meta.env.BASE_URL;
     ))}
   </section>
 
-  <!-- Skills Wall — scattered sticky notes -->
+  <!-- Skills Wall — wooden boards with sticky notes -->
   <div class="skills-wall">
-    {c.skills.groups.map((group, gi) => (
-      <>
-        <div class="skill-note" data-lang="zh">
-          <div class="skill-note-tape"></div>
-          <span class="skill-note-label">{group.label.zh}</span>
-          <span class="skill-note-tags">{group.tags.map(t => typeof t === 'string' ? t : t.zh).join('  ')}</span>
+    <h2 class="skills-wall-title" data-lang="zh">我的技能</h2>
+    <h2 class="skills-wall-title" data-lang="en">My Skills</h2>
+    {c.skills.groups.map(group => (
+      <div class="skill-board">
+        <div class="skill-board-pin"></div>
+        <div class="skill-board-tags" data-lang="zh">
+          {group.tags.map(tag => (
+            <span class="skill-tag">{typeof tag === 'string' ? tag : tag.zh}</span>
+          ))}
         </div>
-        <div class="skill-note" data-lang="en">
-          <div class="skill-note-tape"></div>
-          <span class="skill-note-label">{group.label.en}</span>
-          <span class="skill-note-tags">{group.tags.map(t => typeof t === 'string' ? t : t.en).join('  ')}</span>
+        <div class="skill-board-tags" data-lang="en">
+          {group.tags.map(tag => (
+            <span class="skill-tag">{typeof tag === 'string' ? tag : tag.en}</span>
+          ))}
         </div>
-      </>
+      </div>
     ))}
   </div>
 

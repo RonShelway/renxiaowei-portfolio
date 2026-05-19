@@ -391,112 +391,179 @@ a:hover {
 }
 
 /* ========================================
-   SKILLS WALL — scattered sticky notes
+   SKILLS WALL — wooden boards with sticky notes
    ======================================== */
 
 .skills-wall {
   position: fixed;
-  right: 20px;
+  right: 24px;
   top: 50%;
   transform: translateY(-50%);
   width: calc((100vw - 750px) / 2 - 16px);
-  min-width: 130px;
+  min-width: 140px;
   max-width: 220px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
   z-index: 85;
-  pointer-events: none;  /* let clicks pass through the wall container */
+  pointer-events: none;
 }
 
-.skill-note {
+.skills-wall-title {
+  font-family: 'Noto Serif SC', Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #6B5E4E;
+  text-align: center;
+  letter-spacing: 0.06em;
+  margin: 0 0 4px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid #D8D0C0;
+}
+
+/* ── Wooden board ── */
+
+.skill-board {
   position: relative;
-  background: linear-gradient(175deg, #FFFDF5 0%, #FFF9E6 40%, #F5EDD5 100%);
-  border: 1px solid #E8DDC0;
-  padding: 16px 14px 12px;
+  background: linear-gradient(170deg, #F8F0E0 0%, #F0E4CC 30%, #E8D8B8 100%);
+  border: 1px solid #D8C8A8;
+  border-radius: 3px;
+  padding: 18px 12px 14px;
   box-shadow:
-    1px 2px 5px rgba(0,0,0,0.05),
-    2px 4px 8px rgba(0,0,0,0.03);
-  cursor: default;
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    1px 3px 6px rgba(0,0,0,0.06),
+    0 6px 14px rgba(0,0,0,0.04);
   pointer-events: auto;
   transition:
     transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     box-shadow 0.35s;
 }
 
-.skill-note:nth-child(odd)  { transform: rotate(2.5deg); }
-.skill-note:nth-child(even) { transform: rotate(-2deg); }
-.skill-note:nth-child(5n)   { transform: rotate(3.5deg); }
-.skill-note:nth-child(7n)   { transform: rotate(-3deg); }
+.skill-board:nth-child(even) { transform: rotate(0.8deg); }
+.skill-board:nth-child(odd)  { transform: rotate(-0.6deg); }
 
-.skill-note:hover {
-  transform: rotate(0deg) translateY(-5px) !important;
+.skill-board:hover {
+  transform: rotate(0deg) translateY(-3px) !important;
   box-shadow:
-    2px 8px 14px rgba(0,0,0,0.1),
-    4px 10px 20px rgba(0,0,0,0.06);
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    2px 6px 12px rgba(0,0,0,0.1),
+    0 10px 22px rgba(0,0,0,0.06);
   z-index: 5;
 }
 
-/* Translucent tape */
-.skill-note-tape {
+/* ── Pushpin on board ── */
+
+.skill-board-pin {
   position: absolute;
-  top: -11px;
-  left: 50%;
-  width: 38px;
-  height: 13px;
-  background: rgba(240, 235, 220, 0.55);
-  border-radius: 2px;
-  transform: translateX(-50%) rotate(-3deg);
-  opacity: 0.7;
+  top: -8px;
+  left: 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50% 50% 36% 36% / 40% 40% 50% 50%;
+  background: linear-gradient(150deg, #D0A060 0%, #B08050 60%, #8B6030 100%);
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.14);
+  z-index: 3;
 }
-.skill-note:nth-child(even) .skill-note-tape {
-  transform: translateX(-50%) rotate(4deg);
-  width: 30px;
-}
-.skill-note:nth-child(5n) .skill-note-tape {
-  width: 44px;
-  transform: translateX(-50%) rotate(-5deg);
-}
-
-.skill-note-label {
-  display: block;
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: #6B5E4E;
-  margin-bottom: 5px;
-  letter-spacing: 0.04em;
+.skill-board-pin::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
 }
 
-.skill-note-tags {
-  display: block;
-  font-family: 'Caveat', 'KaiTi', serif;
-  font-size: 0.88rem;
-  color: #8B7E6A;
-  line-height: 1.55;
+/* ── Board inner tags area ── */
+
+.skill-board-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ── Sticky note tag (restored from original card version) ── */
+
+.skill-tag {
+  display: inline-block;
+  position: relative;
+  color: #5A4A2E;
+  background: #FFE893;
+  border: 1px solid #ECD880;
+  padding: 3px 11px;
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.06);
+  font-family: 'Caveat', 'KaiTi', 'STKaiti', serif;
+  font-size: 0.95rem;
   letter-spacing: 0.02em;
+  white-space: nowrap;
+  cursor: default;
+  transition:
+    transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.25s ease;
 }
 
-/* Night mode */
-[data-theme="night"] .skill-note {
-  background: linear-gradient(175deg, #302D25 0%, #2D2A20 40%, #252218 100%);
+.skill-tag:nth-child(odd)  { transform: rotate(-2deg); }
+.skill-tag:nth-child(even) { transform: rotate(2.5deg); }
+.skill-tag:nth-child(3n)   { transform: rotate(-1.5deg); }
+
+.skill-tag::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 7px 7px;
+  border-color: transparent transparent #D8C870 transparent;
+}
+
+.skill-tag:hover {
+  transform: rotate(0deg) translateY(-2px) !important;
+  box-shadow: 2px 4px 8px rgba(0,0,0,0.12);
+}
+
+/* ── Night mode ── */
+
+[data-theme="night"] .skills-wall-title {
+  color: #B0A090;
+  border-bottom-color: #3D3830;
+}
+
+[data-theme="night"] .skill-board {
+  background: linear-gradient(170deg, #2D2A20 0%, #28251C 30%, #221F18 100%);
   border-color: #3D3828;
   box-shadow:
-    1px 2px 5px rgba(0,0,0,0.2),
-    2px 4px 8px rgba(0,0,0,0.15);
-}
-[data-theme="night"] .skill-note-tape {
-  background: rgba(60, 58, 50, 0.45);
-}
-[data-theme="night"] .skill-note-label {
-  color: #B0A090;
-}
-[data-theme="night"] .skill-note-tags {
-  color: #A09880;
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    1px 3px 6px rgba(0,0,0,0.2),
+    0 6px 14px rgba(0,0,0,0.15);
 }
 
-/* Mobile — collapse to bottom */
+[data-theme="night"] .skill-board:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    2px 6px 12px rgba(0,0,0,0.3),
+    0 10px 22px rgba(0,0,0,0.2);
+}
+
+[data-theme="night"] .skill-tag {
+  color: #C0B080;
+  background: #3D3820;
+  border-color: #504820;
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.25);
+}
+
+[data-theme="night"] .skill-tag::after {
+  border-color: transparent transparent #38301C transparent;
+}
+
+[data-theme="night"] .skill-tag:hover {
+  box-shadow: 2px 4px 8px rgba(0,0,0,0.4);
+}
+
+/* ── Mobile ── */
+
 @media (max-width: 1024px) {
   .skills-wall {
     position: static;
@@ -505,7 +572,11 @@ a:hover {
     max-width: 100%;
     margin: 48px auto 0;
     padding: 0 24px;
-    justify-content: center;
+  }
+
+  .skill-board:nth-child(even),
+  .skill-board:nth-child(odd) {
+    transform: none !important;
   }
 }
 
